@@ -16,7 +16,7 @@ SRC_DIR=${REO_DIR}/src
 
 THEME_NAME=Matcha
 COLOR_VARIANTS=('' '-light' '-dark')
-THEME_VARIANTS=('-aliz' '-azul' '-sea')
+THEME_VARIANTS=('-aliz' '-azul' '-sea' '-papaya')
 
 usage() {
   printf "%s\n" "Usage: $0 [OPTIONS...]"
@@ -24,7 +24,7 @@ usage() {
   printf "  %-25s%s\n" "-d, --dest DIR" "Specify theme destination directory (Default: ${DEST_DIR})"
   printf "  %-25s%s\n" "-n, --name NAME" "Specify theme name (Default: ${THEME_NAME})"
   printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [standard|dark] (Default: All variants)"
-  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Specify hue theme variant(s) [aliz|azul|sea] (Default: All variants)"
+  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Specify hue theme variant(s) [aliz|azul|sea|papaya] (Default: All variants)"
   printf "  %-25s%s\n" "-g, --gdm" "Install GDM theme, this option need root user authority! please run this with sudo"
   printf "  %-25s%s\n" "-r, --revert" "revert GDM theme, this option need root user authority! please run this with sudo"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
@@ -36,7 +36,7 @@ install() {
   local name=${2}
   local color=${3}
   local theme=${4}
-
+echo "$color"
   local themedir=${dest}/${name}${color}${theme}
 
   [[ ${color} == '-dark' ]] && local ELSE_DARK=${color}
@@ -62,45 +62,45 @@ install() {
   echo "ButtonLayout=menu:minimize,maximize,close"                                 >> ${themedir}/index.theme
 
   # Install GNOME Shell Theme
-  mkdir -p                                                                            ${themedir}/gnome-shell
-  cd ${SRC_DIR}/gnome-shell
-  cp -ur extensions                                                                   ${themedir}/gnome-shell
-  cp -ur gnome-shell${ELSE_DARK}${theme}.css                                          ${themedir}/gnome-shell/gnome-shell.css
-  cp -ur common-assets                                                                ${themedir}/gnome-shell/assets
+  # mkdir -p                                                                            ${themedir}/gnome-shell
+  # cd ${SRC_DIR}/gnome-shell
+  # cp -ur extensions                                                                   ${themedir}/gnome-shell
+  # cp -ur gnome-shell${ELSE_DARK}${theme}.css                                          ${themedir}/gnome-shell/gnome-shell.css
+  # cp -ur common-assets                                                                ${themedir}/gnome-shell/assets
 
-  cd ${SRC_DIR}/gnome-shell/assets
-  cp -ur no-events${ELSE_DARK}.svg                                                    ${themedir}/gnome-shell/assets/no-events.svg
-  cp -ur no-notifications${ELSE_DARK}.svg                                             ${themedir}/gnome-shell/assets/no-notifications.svg
-  cp -ur calendar-arrow-left${ELSE_DARK}.svg                                          ${themedir}/gnome-shell/assets/calendar-arrow-left.svg
-  cp -ur calendar-arrow-right${ELSE_DARK}.svg                                         ${themedir}/gnome-shell/assets/calendar-arrow-right.svg
-  cp -ur key-hide${ELSE_DARK}.svg                                                     ${themedir}/gnome-shell/assets/key-hide.svg
-  cp -ur key-layout${ELSE_DARK}.svg                                                   ${themedir}/gnome-shell/assets/key-layout.svg
-  cp -ur key-shift${ELSE_DARK}.svg                                                    ${themedir}/gnome-shell/assets/key-shift.svg
-  [[ ${ELSE_DARK} == '' ]] && \
-  cp -ur menu.svg                                                                     ${themedir}/gnome-shell/assets
-  cp -ur submenu${ELSE_DARK}.svg                                                      ${themedir}/gnome-shell/assets/submenu.svg
-  cp -ur submenu-open${ELSE_DARK}.svg                                                 ${themedir}/gnome-shell/assets/submenu-open.svg
+  # cd ${SRC_DIR}/gnome-shell/assets
+  # cp -ur no-events${ELSE_DARK}.svg                                                    ${themedir}/gnome-shell/assets/no-events.svg
+  # cp -ur no-notifications${ELSE_DARK}.svg                                             ${themedir}/gnome-shell/assets/no-notifications.svg
+  # cp -ur calendar-arrow-left${ELSE_DARK}.svg                                          ${themedir}/gnome-shell/assets/calendar-arrow-left.svg
+  # cp -ur calendar-arrow-right${ELSE_DARK}.svg                                         ${themedir}/gnome-shell/assets/calendar-arrow-right.svg
+  # cp -ur key-hide${ELSE_DARK}.svg                                                     ${themedir}/gnome-shell/assets/key-hide.svg
+  # cp -ur key-layout${ELSE_DARK}.svg                                                   ${themedir}/gnome-shell/assets/key-layout.svg
+  # cp -ur key-shift${ELSE_DARK}.svg                                                    ${themedir}/gnome-shell/assets/key-shift.svg
+  # [[ ${ELSE_DARK} == '' ]] && \
+  # cp -ur menu.svg                                                                     ${themedir}/gnome-shell/assets
+  # cp -ur submenu${ELSE_DARK}.svg                                                      ${themedir}/gnome-shell/assets/submenu.svg
+  # cp -ur submenu-open${ELSE_DARK}.svg                                                 ${themedir}/gnome-shell/assets/submenu-open.svg
 
-  cd ${SRC_DIR}/gnome-shell/theme-assets
-  cp -ur checkbox${theme}.svg                                                         ${themedir}/gnome-shell/assets/checkbox.svg
-  [[ ${ELSE_DARK} == '-dark' ]] && \
-  cp -ur menu${ELSE_DARK}${theme}.svg                                                 ${themedir}/gnome-shell/assets/menu.svg
-  cp -ur menu-hover${theme}.svg                                                       ${themedir}/gnome-shell/assets/menu-hover.svg
-  cp -ur more-results${theme}.svg                                                     ${themedir}/gnome-shell/assets/more-results.svg
-  cp -ur toggle-on${theme}.svg                                                        ${themedir}/gnome-shell/assets/toggle-on.svg
+  # cd ${SRC_DIR}/gnome-shell/theme-assets
+  # cp -ur checkbox${theme}.svg                                                         ${themedir}/gnome-shell/assets/checkbox.svg
+  # [[ ${ELSE_DARK} == '-dark' ]] && \
+  # cp -ur menu${ELSE_DARK}${theme}.svg                                                 ${themedir}/gnome-shell/assets/menu.svg
+  # cp -ur menu-hover${theme}.svg                                                       ${themedir}/gnome-shell/assets/menu-hover.svg
+  # cp -ur more-results${theme}.svg                                                     ${themedir}/gnome-shell/assets/more-results.svg
+  # cp -ur toggle-on${theme}.svg                                                        ${themedir}/gnome-shell/assets/toggle-on.svg
 
-  cd ${themedir}/gnome-shell
-  ln -s assets/no-events.svg no-events.svg
-  ln -s assets/process-working.svg process-working.svg
-  ln -s assets/no-notifications.svg no-notifications.svg
+  # cd ${themedir}/gnome-shell
+  # ln -s assets/no-events.svg no-events.svg
+  # ln -s assets/process-working.svg process-working.svg
+  # ln -s assets/no-notifications.svg no-notifications.svg
 
   # Install GTK+ 2 Theme
-  mkdir -p                                                                            ${themedir}/gtk-2.0
-  cd ${SRC_DIR}/gtk-2.0
-  cp -ur {apps.rc,main.rc,panel.rc,xfce-notify.rc}                                    ${themedir}/gtk-2.0
-  cp -ur gtkrc${color}${theme}                                                        ${themedir}/gtk-2.0/gtkrc
-  cp -ur assets${ELSE_DARK}${theme}                                                   ${themedir}/gtk-2.0/assets
-  cp -ur menubar-toolbar${ELSE_DARK}.rc                                               ${themedir}/gtk-2.0/menubar-toolbar.rc
+  # mkdir -p                                                                            ${themedir}/gtk-2.0
+  # cd ${SRC_DIR}/gtk-2.0
+  # cp -ur {apps.rc,main.rc,panel.rc,xfce-notify.rc}                                    ${themedir}/gtk-2.0
+  # cp -ur gtkrc${color}${theme}                                                        ${themedir}/gtk-2.0/gtkrc
+  # cp -ur assets${ELSE_DARK}${theme}                                                   ${themedir}/gtk-2.0/assets
+  # cp -ur menubar-toolbar${ELSE_DARK}.rc                                               ${themedir}/gtk-2.0/menubar-toolbar.rc
 
   # Install GTK+ 3 Theme
   mkdir -p                                                                            ${themedir}/gtk-3.0
@@ -111,51 +111,51 @@ install() {
 
   cp -ur thumbnail${ELSE_DARK}${theme}.png                                            ${themedir}/gtk-3.0/thumbnail.png
 
-  # Install CINNAMON Theme
-  mkdir -p                                                                            ${themedir}/cinnamon
-  cd ${SRC_DIR}/cinnamon
-  cp -ur cinnamon${ELSE_DARK}${theme}.css                                             ${themedir}/cinnamon/cinnamon.css
-  cp -ur thumbnail${ELSE_DARK}${theme}.png                                            ${themedir}/cinnamon/thumbnail.png
+  # # Install CINNAMON Theme
+  # mkdir -p                                                                            ${themedir}/cinnamon
+  # cd ${SRC_DIR}/cinnamon
+  # cp -ur cinnamon${ELSE_DARK}${theme}.css                                             ${themedir}/cinnamon/cinnamon.css
+  # cp -ur thumbnail${ELSE_DARK}${theme}.png                                            ${themedir}/cinnamon/thumbnail.png
 
-  cd ${SRC_DIR}/cinnamon/assets${theme}
-  cp -ur common-assets                                                                ${themedir}/cinnamon
-  cp -ur assets${ELSE_DARK}                                                           ${themedir}/cinnamon/assets
+  # cd ${SRC_DIR}/cinnamon/assets${theme}
+  # cp -ur common-assets                                                                ${themedir}/cinnamon
+  # cp -ur assets${ELSE_DARK}                                                           ${themedir}/cinnamon/assets
 
-  # Install Metacity Theme
-  mkdir -p                                                                            ${themedir}/metacity-1
-  cd ${SRC_DIR}/metacity-1
-  cp -ur {thumbnail.png,*.svg,metacity-theme-3.xml}                                   ${themedir}/metacity-1
-  cp -ur metacity-theme-1${theme}.xml                                                 ${themedir}/metacity-1/metacity-theme-1.xml
+  # # Install Metacity Theme
+  # mkdir -p                                                                            ${themedir}/metacity-1
+  # cd ${SRC_DIR}/metacity-1
+  # cp -ur {thumbnail.png,*.svg,metacity-theme-3.xml}                                   ${themedir}/metacity-1
+  # cp -ur metacity-theme-1${theme}.xml                                                 ${themedir}/metacity-1/metacity-theme-1.xml
 
-  cd ${themedir}/metacity-1
-  ln -s metacity-theme-1.xml metacity-theme-2.xml
+  # cd ${themedir}/metacity-1
+  # ln -s metacity-theme-1.xml metacity-theme-2.xml
 
-  # Install xfwm4 Theme
-  mkdir -p                                                                            ${themedir}/xfwm4
-  cd ${SRC_DIR}/xfwm4
-  cp -ur assets${color}${theme}/*.png                                                 ${themedir}/xfwm4
+  # # Install xfwm4 Theme
+  # mkdir -p                                                                            ${themedir}/xfwm4
+  # cd ${SRC_DIR}/xfwm4
+  # cp -ur assets${color}${theme}/*.png                                                 ${themedir}/xfwm4
 
-  if [[ ${color} == '-light' ]] ; then
-    cp -ur themerc${color}                                                            ${themedir}/xfwm4/themerc
-  else
-    cp -ur themerc${theme}                                                            ${themedir}/xfwm4/themerc
-  fi
+  # if [[ ${color} == '-light' ]] ; then
+  #   cp -ur themerc${color}                                                            ${themedir}/xfwm4/themerc
+  # else
+  #   cp -ur themerc${theme}                                                            ${themedir}/xfwm4/themerc
+  # fi
 
-  # Install openbox Theme
-  mkdir -p                                                                            ${themedir}/openbox-3
-  cd ${SRC_DIR}/openbox-3
-  cp -ur *.xbm                                                                        ${themedir}/openbox-3
-  cp -ur themerc${ELSE_DARK}${theme}                                                  ${themedir}/openbox-3/themerc
+  # # Install openbox Theme
+  # mkdir -p                                                                            ${themedir}/openbox-3
+  # cd ${SRC_DIR}/openbox-3
+  # cp -ur *.xbm                                                                        ${themedir}/openbox-3
+  # cp -ur themerc${ELSE_DARK}${theme}                                                  ${themedir}/openbox-3/themerc
 
-  # Install Unity Theme
-  mkdir -p                                                                            ${themedir}/unity
-  cd ${SRC_DIR}
-  cp -ur unity                                                                        ${themedir}
+  # # Install Unity Theme
+  # mkdir -p                                                                            ${themedir}/unity
+  # cd ${SRC_DIR}
+  # cp -ur unity                                                                        ${themedir}
 
-  # Install Plank Theme
-  mkdir -p                                                                            ${themedir}/plank
-  cd ${SRC_DIR}
-  cp -ur plank                                                                        ${themedir}
+  # # Install Plank Theme
+  # mkdir -p                                                                            ${themedir}/plank
+  # cd ${SRC_DIR}
+  # cp -ur plank                                                                        ${themedir}
 }
 
 # Backup and install files related to GDM theme
@@ -237,11 +237,11 @@ revert_gdm() {
 
 #  Install theme
 install_theme() {
-for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
-  for theme in "${themes[@]:-${THEME_VARIANTS[@]}}"; do
+ for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
+   for theme in "${themes[@]:-${THEME_VARIANTS[@]}}"; do
     install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${theme}"
-  done
-done
+   done
+ done
 }
 
 while [[ $# -gt 0 ]]; do
@@ -280,6 +280,10 @@ while [[ $# -gt 0 ]]; do
             ;;
           sea)
             themes+=("${THEME_VARIANTS[2]}")
+            shift 1
+            ;;
+          papaya)
+            themes+=("${THEME_VARIANTS[3]}")
             shift 1
             ;;
           -*|--*)
