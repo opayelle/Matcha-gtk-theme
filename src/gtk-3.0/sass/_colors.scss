@@ -13,6 +13,13 @@ $fg_color: if($variant =='light', #273134, #ccd7d4);
   $fg_color: if($variant =='light', #323232, #cbbfbf);
 }
 
+@if $color=='papaya' {
+  $base_color: if($variant =='light', #ffffff, #262626);
+  $text_color: if($variant == 'light', #363636, #b5abab);
+  $bg_color: if($variant =='light', #f7f7f7, #222222);
+  $fg_color: if($variant =='light', #323232, #cbbfbf);
+}
+
 @if $color=='azul' {
   $base_color: if($variant =='light', #ffffff, #22252c);
   $text_color: if($variant == 'light', #2e313d, #afb4ba);
@@ -24,6 +31,7 @@ $selected_fg_color: #ffffff;
 $selected_bg_color: #2eb398;
 @if $color=='aliz' { $selected_bg_color: #F0544C; }
 @if $color=='azul' { $selected_bg_color: #3498db; }
+@if $color=='papaya' { $selected_bg_color: #eeaa17; }
 $alt_selected_bg_color: lighten($selected_bg_color, 6%);
 $selected_borders_color: darken($selected_bg_color, 20%);
 $borders_color: if($variant =='light', rgba(black, 0.15), rgba(black, 0.25));
@@ -48,6 +56,13 @@ $suggested_color: #33b165;
 $destructive_fg_color: white;
 $suggested_fg_color: white;
 $progress_color: #db5b5b;
+
+@if $color=='papaya' {
+    $progress_color: rgb(0, 3, 51);
+    $success_color: #9ed817;
+    $destructive_color: #ff7b00;
+    $suggested_color: #ffa600;
+}
 
 @if $color=='aliz' {
     $progress_color: #00C487;

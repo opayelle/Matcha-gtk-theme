@@ -4932,11 +4932,11 @@ window.thunar toolbar#location-toolbar .linked:not(.vertical):not(.stack-switche
   background-color: transparent;
   background-image: none;
   color: #d0ccc5;
-  border-radius: 10px;
+  border-radius: 0;
   box-shadow: none;
   border: none;
   margin: 0 0 0 0;
-  border-image: radial-gradient(circle closest-corner at center calc(100% - 10px), #eeaa17 0%, transparent 0%) 0 0 0/0 0 0;
+  border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #eeaa17 0%, transparent 0%) 0 0 0/0 0 0;
 }
 
 window.thunar toolbar#location-toolbar .linked:not(.vertical):not(.stack-switcher).path-bar button:hover, window.thunar #location-toolbar.inline-toolbar .linked:not(.vertical):not(.stack-switcher).path-bar button:hover, .nemo-window .primary-toolbar .linked:not(.vertical):not(.stack-switcher).path-bar button:hover,
@@ -9730,7 +9730,7 @@ filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):se
 .nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected,
 .nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected label,
 .nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected .sidebar-icon {
-  color: #ffffff;
+  color: #ffff00;
 }
 
 filechooser placessidebar.sidebar separator,
